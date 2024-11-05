@@ -1,0 +1,46 @@
+-- Iniciando Programa --
+
+-- Iniciando Turma de Tamanho(5) --
+
+-- Aluno 1 --
+Name: Samuel
+Region: O
+Cost: 1
+
+-- Aluno 2 --
+Name: Fabricio
+Region: L
+Cost: 1
+
+-- Aluno 3 --
+Name: Emanuel
+Region: S
+Cost: 3
+
+-- Aluno 4 --
+Name: Kaio
+Region: S
+Cost: 20
+
+-- Aluno 5 --
+Name: Hugo
+Region: N
+Cost: 90
+
+-- Iniciando Comparações --
+-- Comparando Samuel com Fabricio --
+Fabricio.region < Samuel.region
+
+-- Trocando Fabricio com Samuel --
+-- Comparando Samuel com Emanuel --
+Samuel.cost < Emanuel.cost
+
+-- Trocando Emanuel com Emanuel --
+-- Comparando Emanuel com Kaio --
+Emanuel.cost < Kaio.cost
+
+-- Trocando Kaio com Kaio --
+-- Comparando Kaio com Hugo --
+Kaio.cost < Hugo.cost
+
+-- Trocando Hugo com Hugo --
