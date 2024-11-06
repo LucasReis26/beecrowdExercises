@@ -1,0 +1,17 @@
+--- Iniciando Exercício 1211 ---
+
+-- Criando array de  2 números --
+
+- Inserindo 12345 ao array de números na posição(0) -
+
+- Inserindo 12354 ao array de números na posição(1) -
+
+-- Criando array de  3 números --
+
+- Inserindo 535456 ao array de números na posição(0) -
+
+- Inserindo 535488 ao array de números na posição(1) -
+
+- Inserindo 835456 ao array de números na posição(2) -
+
+--- Fim ---
