@@ -17,5 +17,6 @@ int main(){
 		printf("%d/%d = %d/%d\n",result[0],result[1],simplifyResult[0],simplifyResult[1]);
 
 		free(result);
+		free(simplifyResult);
 	}
 }
