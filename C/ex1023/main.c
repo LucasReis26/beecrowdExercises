@@ -2,23 +2,25 @@
 #include "assets/cidade.h"
 
 int main(){
-	int qtdImoveis;
+	long long qtdImoveis;
 	int indCidade = 1;
 
-	scanf("%d",&qtdImoveis);
+	scanf("%lld",&qtdImoveis);
 
 	while(qtdImoveis != 0){
 		Casa* casas = new_casa(qtdImoveis);
-		scanInfos(casas,&qtdImoveis);
-		ordenaPorConsumo(casas, qtdImoveis);
-		float mediaPorPessoa = consumoCidade(casas, qtdImoveis);
+		int consumo[201];
+		for(int i = 0; i < 201; i++) consumo[i] = 0;
+
+		scanInfos(casas,&qtdImoveis,consumo);
+		double mediaPorPessoa = consumoCidade(casas, qtdImoveis);
 
 
 		printf("Cidade# %d:\n",indCidade++);
-		printaConsumo(casas, qtdImoveis);
+		printaConsumo(consumo);
 		printf("Consumo medio: %.2f m3.\n",mediaPorPessoa);
 		
-		scanf("%d",&qtdImoveis);
+		scanf("%lld",&qtdImoveis);
 		if(qtdImoveis != 0) printf("\n");
 	}
 }

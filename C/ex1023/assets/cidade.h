@@ -10,10 +10,9 @@ typedef struct Casa{
 	int mediaConsumo;
 }Casa;
 
-Casa* new_casa(int);
-void scanInfos(Casa*, int*);
-void ordenaPorConsumo(Casa*, int);
-float consumoCidade(Casa*, int);
-void printaConsumo(Casa*, int);
+Casa* new_casa(long long);
+void scanInfos(Casa*, long long*, int*);
+double consumoCidade(Casa*, int);
+void printaConsumo(int*);
 
 #endif

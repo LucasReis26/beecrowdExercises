@@ -1,67 +1,51 @@
 #include "cidade.h"
 
-Casa* new_casa(int x){
+Casa* new_casa(long long x){
 	Casa* resp = (Casa*)malloc(x*sizeof(Casa));
-	resp->pessoas = 0;
-	resp->consumoCasa = 0;
-	resp->mediaConsumo = 0.0;
+	for(long long i; i < x; i++){
+		resp->pessoas = 0;
+		resp->consumoCasa = 0;
+		resp->mediaConsumo = 0;
+	}
 	return resp;
 }
 
-void scanInfos(Casa* casa, int* x){
+void scanInfos(Casa* casa, long long* x, int *consumo){
 	for(int i = 0; i < *x; i++){
 		scanf("%d %d",&casa[i].pessoas,&casa[i].consumoCasa);
-
 		casa[i].mediaConsumo = casa[i].consumoCasa / casa[i].pessoas;
-
-		if(i > 0 && casa[i].mediaConsumo == casa[i-1].mediaConsumo){
-			casa[i-1].pessoas += casa[i].pessoas;
-			casa[i-1].consumoCasa += casa[i].consumoCasa;
-			(*x)--;
-			i--;
-		}
-
+		consumo[casa[i].mediaConsumo] += casa[i].pessoas;
 	}
 }
 
-float consumoCidade(Casa* casa, int x){
-	float resp;
+double consumoCidade(Casa* casa, int x){
+	double resp;
 
-	int totalConsumo = 0;
-	int totalPessoas = 0;
+	long long totalConsumo = 0;
+	long long totalPessoas = 0;
 
-	for(int i = 0; i < x; i++){
+	for(long long i = 0; i < x; i++){
 		totalConsumo += casa[i].consumoCasa;
 		totalPessoas += casa[i].pessoas;
 	}
 
-	resp = (float) totalConsumo / (float) totalPessoas;
+	resp = (double) totalConsumo / (double) totalPessoas;
 
-	int parte = (int) (resp * 100);
+	long long parte = (long long) (resp * 100);
 	resp =  parte / 100.0;
 
 	return resp;
 }
 
-void ordenaPorConsumo(Casa* casas, int x){
-	for(int i = 0; i < x - 1; i++){
-		int menor = i;
 
-		for(int j = i + 1; j < x; j++){
-			if(casas[j].mediaConsumo < casas[menor].mediaConsumo) menor = j;
-		}
-
-		Casa aux = casas[i];
-		casas[i] = casas[menor];
-		casas[menor] = aux;
+void printaConsumo(int* consumo){
+	int primeiro = 1;
+	for(int i = 0; i < 201; i++){
+		if(consumo[i] > 0){
+			if(!primeiro) printf(" ");
+			printf("%d-%d",consumo[i],i);
+			primeiro = 0;
+		} 
 	}
-}
-
-void printaConsumo(Casa* casas, int x){
-	for(int i = 0; i < x; i++){
-		if(i >= x - 1)
-			printf("%d-%d\n",casas[i].pessoas,casas[i].mediaConsumo);
-		else
-			printf("%d-%d ",casas[i].pessoas,casas[i].mediaConsumo);
-	}
+	printf("\n");
 }
