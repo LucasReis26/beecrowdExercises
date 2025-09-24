@@ -12,7 +12,7 @@ typedef struct Casa{
 
 Casa* new_casa(long long);
 void scanInfos(Casa*, long long*, int*);
-double consumoCidade(Casa*, int);
+double consumoCidade(Casa*, long long);
 void printaConsumo(int*);
 
 #endif

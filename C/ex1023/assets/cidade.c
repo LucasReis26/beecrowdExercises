@@ -18,7 +18,7 @@ void scanInfos(Casa* casa, long long* x, int *consumo){
 	}
 }
 
-double consumoCidade(Casa* casa, int x){
+double consumoCidade(Casa* casa, long long x){
 	double resp;
 
 	long long totalConsumo = 0;
