@@ -18,7 +18,7 @@ int main(){
 
 		printf("Cidade# %d:\n",indCidade++);
 		printaConsumo(consumo);
-		printf("Consumo medio: %.2f m3.\n",mediaPorPessoa);
+		printf("Consumo medio: %.2lf m3.\n",mediaPorPessoa);
 		
 		scanf("%lld",&qtdImoveis);
 		if(qtdImoveis != 0) printf("\n");
