@@ -2,29 +2,51 @@
 
 void scanMarmores(int *marmores, int x){
 	for(int i = 0; i < x; i++){
-		int num;
-		scanf("%d",&num);
-		marmores[num]++;
+		scanf("%d",&marmores[i]);
 	}
 }
 
-void consultaMarmores(int *marmores, int y){
+void consultaMarmores(int *marmores,int x, int y){
 	for(int i = 0; i < y; i++){
 		int num;
-		int found = 0;
 		scanf("%d",&num);
-		for(int j = 0, position = 0; j < 10000 && !found; j++){
-			// printf("%d\n",j);
-			if(marmores[j] > 0 && j != num){
-				position += marmores[j];
-			}else if(marmores[j] > 0 && j == num){
-				printf("%d found at %d\n",num,position+1);
+		int found = 0;
+
+		for(int j = 0; j < x; j++){
+			if(num == marmores[j]){
 				found = 1;
+				printf("%d found at %d\n",num,j+1);
+				j = x;
+			}else if(marmores[j] > num){
+				j = x;
 			}
 		}
-		// printf("Sai do for\n");
 		if(!found){
 			printf("%d not found\n",num);
 		}
 	}
 }
+
+void quicksort(int *marmores, int x){
+	quicksortRec(marmores,0,x-1);
+}
+
+void quicksortRec(int *marmores, int esq, int dir){
+	int i = esq;
+	int j = dir;
+	int pivo = marmores[(esq + dir)/2];
+	while(i <= j){
+		while(marmores[i] < pivo) i++;
+		while(marmores[j] > pivo) j--;
+		if(i <= j){
+			int aux = marmores[i];
+			marmores[i] = marmores[j];
+			marmores[j] = aux;
+			i++;
+			j--;
+		}
+	}
+	if(esq < j) quicksortRec(marmores,esq,j);
+	if(i < dir) quicksortRec(marmores,i,dir);
+}
+

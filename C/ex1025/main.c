@@ -11,12 +11,13 @@ int main(){
 	while(numMarmores != 0 && numConsultas != 0){
 		printf("CASE# %d:\n",numCase++);
 
-		int marmores[10000];
-		for(int i = 0; i < 10000; i++) marmores[i] = 0;
+		int marmores[numMarmores];
 
 		scanMarmores(marmores,numMarmores);
 
-		consultaMarmores(marmores, numConsultas);
+		quicksort(marmores,numMarmores);
+
+		consultaMarmores(marmores,numMarmores, numConsultas);
 
 		scanf("%d %d",&numMarmores, &numConsultas);
 	}
