@@ -74,59 +74,37 @@ int tamanho(Pilha* pilha){
 int organizaVagoes(Pilha *entrada, Pilha *estacao, Pilha *saida, int *arranjo){
 	int resp = 0;
 
-	int indexVerificador = 0;
-
+	int organizando = 1;
 	int tamTrem = tamanho(entrada);
 
-	int organizando = 1;
+	int indexV = 0;
 
 	while(organizando){
-		int vagao = 0;
-		int liEntrada = 0;
-		int testeiEstacao = 0;
-
-		if(tamanho(entrada)){ 
-			vagao = pop(entrada);
-			// printf("%d %d\n",vagao,arranjo[indexVerificador]);
-			liEntrada = 1;
-		}
-
-		if(liEntrada && vagao == arranjo[indexVerificador]){
-			// printf("Mandei pra saída\n");
-			push(saida,vagao);
-			indexVerificador++;
-			vagao = 0;
+		if(tamanho(entrada) && mostraTopo(entrada) == arranjo[indexV]){
+			push(saida,pop(entrada));
+			indexV++;
 		}else{
-
-			// if(tamanho(estacao)) printf("Estacao> %d %d\n",estacao->topo->prox->elemento, arranjo[indexVerificador]);
-
-			if(tamanho(estacao) && estacao->topo->prox->elemento == arranjo[indexVerificador]){
-				// printf("Mandei pra saída\n");
-				int valorEntrada = vagao;
-				vagao = pop(estacao);
-				push(saida,vagao);
-				indexVerificador++;
-				if(liEntrada) {
-					// printf("Mandei %d para estacao\n",valorEntrada);
-					push(estacao,valorEntrada);
-					vagao = 0;
-				}
-			}else if(liEntrada){
-				// printf("Mandei para estacao\n");
-				push(estacao,vagao);
-				vagao = 0;
-				testeiEstacao = 1;
+			if(tamanho(estacao) && mostraTopo(estacao) == arranjo[indexV]){
+				push(saida,pop(estacao));
+				indexV++;
 			}else{
-				organizando = 0;
+				if(tamanho(entrada)) push(estacao,pop(entrada));
+				else organizando = 0;
 			}
-
 		}
-
-		liEntrada = 0;
-		testeiEstacao = 0;
 	}
 
-	if(indexVerificador == tamTrem) resp = 1;
+	if(indexV == tamTrem) resp = 1;
 
+	return resp;
+}
+
+int mostraTopo(Pilha *pilha){
+	int resp;
+	if(tamanho(pilha)) resp = pilha->topo->prox->elemento;
+	else{
+		resp = -1;
+		printf("Erro ao mostrar topo\n");
+	}
 	return resp;
 }

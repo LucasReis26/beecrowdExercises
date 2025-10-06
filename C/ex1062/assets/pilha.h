@@ -20,6 +20,7 @@ void push(Pilha*,int);
 int pop(Pilha*);
 void preencheCrescente(Pilha*,int);
 void mostrar(Pilha*);
+int mostraTopo(Pilha*);
 int tamanho(Pilha*);
 int organizaVagoes(Pilha*,Pilha*,Pilha*,int*);
 void freePilhaRec(Celula*);
